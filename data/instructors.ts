@@ -1,0 +1,6 @@
+export type Instructor = {slug:string;name:string;role:string;rank:string;bio:string;philosophy:string;areas:string[];dojos:string[];image:string;imagePosition:string};
+// VERIFY BEFORE LAUNCH: rank, experience, certifications, biographies and dojo assignments.
+export const instructors: Instructor[] = [
+ {slug:"kannan-b",name:"Sensei Kannan",role:"Authorised Instructor",rank:"Shodan Black Belt",bio:"A Shodan black belt and authorised instructor who has trained students for the past year at the Ayyapanthangal Dojo.",philosophy:"Good technique is built through attention, correction and consistent practice.",areas:["Goju-Ryu fundamentals","Kata","Self-defence","Technical development"],dojos:["Ayyapanthangal Dojo"],image:"/images/instructors/kannan-original.png",imagePosition:"50% 50%"},
+ {slug:"kowsalya-b",name:"Sensei Kowsalya",role:"Authorised Instructor",rank:"Shodan Black Belt",bio:"A Shodan black belt and authorised instructor who has trained children and adults for the past year at the Thiruverkadu, Ayyapanthangal and Thundalam dojos.",philosophy:"Progress grows from patient instruction, regular attendance and respect in the dojo.",areas:["Beginners","Children’s classes","Kata","Fitness"],dojos:["Thiruverkadu Dojo","Ayyapanthangal Dojo","Thundalam Dojo"],image:"/images/instructors/kowsalya-lavender-v2.png",imagePosition:"50% 50%"},
+];

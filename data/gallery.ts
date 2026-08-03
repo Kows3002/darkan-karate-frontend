@@ -1,0 +1,16 @@
+export type GalleryGroup={slug:string;title:string;date:string;count:number};
+export type GalleryItem={id:string;src:string;title:string;date:string;category:"National Tournament"|"Belt Grading";alt:string;position?:string;portrait?:boolean};
+export const galleries:GalleryGroup[]=[
+ {slug:"grading-december-2025",title:"Belt Grading",date:"21 December 2025",count:1},
+ {slug:"national-tournament-2026",title:"National Tournament",date:"12 July 2026",count:5},
+ {slug:"grading-august-2026",title:"Belt Grading",date:"3 August 2026",count:1},
+];
+export const galleryItems:GalleryItem[]=[
+ {id:"tournament-medallists",src:"/images/gallery/national-tournament-medallists-2026-hd.jpg",title:"National Tournament Medallists",date:"12 July 2026",category:"National Tournament",alt:"Darkan karate students with medals and certificates at the 2026 Chennai national tournament",position:"center 47%"},
+ {id:"tournament-first-place",src:"/images/gallery/national-tournament-first-place-2026-hd.jpg",title:"First-place Achievement",date:"12 July 2026",category:"National Tournament",alt:"Young Darkan karate student standing on the first-place podium with a medal and certificate",position:"center 42%",portrait:true},
+ {id:"tournament-team-stage",src:"/images/gallery/national-tournament-team-stage-2026-hd.jpg",title:"Tournament Team Recognition",date:"12 July 2026",category:"National Tournament",alt:"Darkan instructors and karate students holding certificates after the Chennai Karate Kobudo Championship",position:"center 42%"},
+ {id:"tournament-student-medal",src:"/images/gallery/national-tournament-student-medal-2026-hd.jpg",title:"Student Medal Presentation",date:"12 July 2026",category:"National Tournament",alt:"Karate student with medal and certificate alongside instructors at the Chennai national tournament",position:"center 45%"},
+ {id:"tournament-team-certificates",src:"/images/gallery/national-tournament-team-certificates-2026-hd.jpg",title:"Certificates and Medals",date:"12 July 2026",category:"National Tournament",alt:"Darkan karate team displaying national tournament certificates and medals at the Hall of Fame event",position:"center 45%"},
+ {id:"grading-december",src:"/images/gallery/belt-grading-december-2025-hd.jpg",title:"December Belt Grading",date:"21 December 2025",category:"Belt Grading",alt:"Children and instructors together after the December 2025 karate belt grading with certificates",position:"center 44%"},
+ {id:"grading-august",src:"/images/gallery/belt-grading-august-2026-hd.jpg",title:"August Belt Grading",date:"3 August 2026",category:"Belt Grading",alt:"Karate students wearing coloured belts and holding certificates after the August 2026 belt grading",position:"center 46%"},
+];
