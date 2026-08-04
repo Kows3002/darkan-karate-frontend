@@ -4,6 +4,16 @@ import { useState } from "react";
 
 type Errors = Partial<Record<"name" | "phone" | "email" | "dojo" | "message", string>>;
 
+const contactApiUrl = process.env.NEXT_PUBLIC_CONTACT_API_URL;
+
+function getContactEndpoint() {
+  if (!contactApiUrl) {
+    throw new Error("The contact form is not configured. Please contact us by phone or email.");
+  }
+
+  return `${contactApiUrl.replace(/\/$/, "")}/api/contact`;
+}
+
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Errors>({});
@@ -22,8 +32,7 @@ export function ContactForm() {
     if (Object.keys(next).length) return;
     setStatus("loading");
     try {
-      const endpoint = process.env.NEXT_PUBLIC_CONTACT_API_URL || "http://localhost:5000/api/contact";
-      const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+      const response = await fetch(getContactEndpoint(), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
       const responseText = await response.text();
       let result: { success?: boolean; message?: string; error?: string } = {};
       try { result = responseText ? JSON.parse(responseText) : {}; } catch { result = {}; }
@@ -33,7 +42,7 @@ export function ContactForm() {
       form.reset();
     } catch (error) {
       const message = error instanceof TypeError
-        ? "The contact server is unavailable. Start the backend on port 5000 and allow requests from localhost:3000."
+        ? "The contact server is unavailable. Please try again later or contact us by phone or email."
         : error instanceof Error ? error.message : "The enquiry could not be sent.";
       setErrors({ message });
       setStatus("error");
