@@ -1,2 +1,13 @@
-import type {MetadataRoute} from "next";import {site,navigation} from "@/data/site";
-export default function sitemap():MetadataRoute.Sitemap{return navigation.map(([,path])=>({url:`${site.url}${path}`,lastModified:new Date(),changeFrequency:path==="/"?"weekly":"monthly",priority:path==="/" ? 1:.7}))}
+import type { MetadataRoute } from "next";
+
+const productionOrigin = "https://darkankarate.in";
+const routes = ["", "/about", "/dojos", "/events", "/gallery", "/contact"] as const;
+
+export default function sitemap(): MetadataRoute.Sitemap {
+    return routes.map((path) => ({
+        url: `${productionOrigin}${path || "/"}`,
+        lastModified: new Date("2026-08-30"),
+        changeFrequency: path === "" ? "weekly" : "monthly",
+        priority: path === "" ? 1 : 0.7,
+    }));
+}

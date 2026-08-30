@@ -1,23 +1,20 @@
-import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, CircleDot, Footprints, ShieldCheck, Wind } from "lucide-react";
 import { site } from "@/data/site";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { createPageMetadata } from "@/data/metadata";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbStructuredData } from "@/data/structuredData";
 
-export const metadata: Metadata = {
-  title: "About Our Traditional Goju-Ryu Karate & Kobudo Academy",
-  description:
-    "Learn how Darkan teaches traditional Okinawan Goju-Ryu Karate-Do and Kobudo for children and adults across Thiruverkadu, Ayyapanthangal and Thundalam, Tamil Nadu.",
-  keywords: [
-    "traditional Okinawan karate Tamil Nadu",
-    "Goju-Ryu Karate-Do",
-    "Kobudo classes",
-    "karate for children and adults",
-    "karate academy Thiruverkadu",
-    "karate classes Ayyapanthangal",
-    "karate training Thundalam",
-  ],
-};
+export const metadata = createPageMetadata({
+  title: "About Darkan Goju-Ryu Karate Academy",
+  description: "Discover Darkan Academy’s traditional Okinawan Goju-Ryu Karate-Do and Kobudo teaching method, instructors, values and training approach in Tamil Nadu.",
+  path: "/about",
+  image: "/images/gallery/belt-grading-december-2025-hd.webp",
+  imageAlt: "Darkan students and instructors after a karate belt grading in Tamil Nadu",
+  imageWidth: 2400,
+  imageHeight: 1800,
+});
 
 const method = [
   { mark: "基", title: "Build the base", text: "Stance, balance, guard and movement are corrected first, so later technique has a dependable foundation." },
@@ -28,6 +25,7 @@ const method = [
 
 export default function About() {
   return <>
+    <JsonLd data={breadcrumbStructuredData("About", "/about")}/>
     <section className="about-hero">
       <div className="container about-hero__grid">
         <div className="about-hero__copy">
@@ -36,9 +34,9 @@ export default function About() {
           <p>Darkan is a traditional Okinawan Goju-Ryu Karate-Do and Kobudo school serving children and adults in Tamil Nadu. We teach the details that make technique reliable: posture, breathing, timing, control and respectful conduct.</p>
           <div className="about-hero__actions"><Link href="/dojos" className="btn btn-red">Find a class</Link><Link href="/#faculty-title" className="about-text-link">Meet the instructors <ArrowUpRight aria-hidden="true"/></Link></div>
         </div>
-        <div className="about-hero__mark" aria-label="Darkan academy emblem">
+        <div className="about-hero__mark" role="img" aria-label="Darkan academy emblem">
           <span className="about-hero__word" aria-hidden="true">剛柔</span>
-          <Image src="/images/brand/darkhan-academy-logo-clean.png" width={1254} height={1254} alt="Darkan Traditional Okinawan Goju-Ryu Karate-Do and Kobudo emblem" priority/>
+          <ResponsiveImage src="/images/brand/darkan-academy-logo-clean.webp" fallbackSrc="/images/brand/darkan-academy-logo-clean.png" width={1254} height={1254} sizes="(max-width: 600px) 300px, 520px" priority alt=""/>
         </div>
       </div>
       <div className="container about-facts" aria-label="Academy at a glance">
@@ -52,7 +50,7 @@ export default function About() {
     <section className="about-origin" aria-labelledby="about-origin-title">
       <div className="container about-origin__grid">
         <figure className="about-origin__photo">
-          <Image src="/images/gallery/belt-grading-december-2025-hd.jpg" fill sizes="(min-width: 900px) 52vw, 100vw" alt="Darkan students and instructors together after a karate belt grading in Tamil Nadu"/>
+          <ResponsiveImage src="/images/gallery/belt-grading-december-2025-hd.webp" fallbackSrc="/images/gallery/belt-grading-december-2025-hd.jpg" width={2400} height={1800} fill sizes="(min-width: 900px) 52vw, 100vw" alt="Darkan students and instructors together after a karate belt grading in Tamil Nadu"/>
           <figcaption><span>Training made visible</span> Students, instructors and earned progress.</figcaption>
         </figure>
         <div className="about-origin__story">

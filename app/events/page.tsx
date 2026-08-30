@@ -1,14 +1,22 @@
-import type { Metadata } from "next";
-import Image from "next/image";
 import { EventList } from "@/components/EventList";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { createPageMetadata } from "@/data/metadata";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbStructuredData } from "@/data/structuredData";
 
-export const metadata: Metadata = {
-  title: "Karate Events, Belt Gradings & Tournaments in Tamil Nadu",
-  description: "Follow Darkan Karate belt gradings, tournament participation and the student self-defence awareness programme conducted at Velammal Nexus, Avadi.",
-};
+export const metadata = createPageMetadata({
+  title: "Karate Events & Belt Gradings | Darkan Academy",
+  description: "View Darkan Academy karate events, belt grading dates, tournament participation and student self-defence programmes across Chennai and Tamil Nadu.",
+  path: "/events",
+  image: "/images/events/velammal-self-defence/session-address.webp",
+  imageAlt: "Darkan instructors leading a student self-defence awareness programme in Avadi",
+  imageWidth: 864,
+  imageHeight: 1152,
+});
 
 export default function Events() {
   return <>
+    <JsonLd data={breadcrumbStructuredData("Events", "/events")}/>
     <section className="events-hero">
       <div className="container events-hero__grid">
         <div><h1>Work beyond the dojo.</h1></div>
@@ -29,9 +37,9 @@ export default function Events() {
           </dl>
         </div>
         <div className="school-session__photos" aria-label="Photographs from the Velammal Nexus self-defence awareness session">
-          <figure className="school-session__photo school-session__photo--main"><Image src="/images/events/velammal-self-defence/session-address.jpeg" fill sizes="(min-width: 900px) 35vw, 100vw" alt="Kowsalya addressing students with Kannan during the self-defence awareness programme at Velammal Nexus Avadi"/></figure>
-          <figure className="school-session__photo"><Image src="/images/events/velammal-self-defence/school-recognition.jpeg" fill sizes="(min-width: 900px) 18vw, 50vw" alt="Velammal Nexus student and school representative with Kannan and Kowsalya after the awareness programme"/></figure>
-          <figure className="school-session__photo"><Image src="/images/events/velammal-self-defence/awareness-session-team.jpeg" fill sizes="(min-width: 900px) 18vw, 50vw" alt="Kannan and Kowsalya receiving an acknowledgement at Velammal Nexus Avadi"/></figure>
+          <figure className="school-session__photo school-session__photo--main"><ResponsiveImage src="/images/events/velammal-self-defence/session-address.webp" fallbackSrc="/images/events/velammal-self-defence/session-address.jpeg" width={864} height={1152} fill sizes="(min-width: 900px) 35vw, 100vw" alt="Kowsalya addressing students with Kannan during the self-defence awareness programme at Velammal Nexus Avadi"/></figure>
+          <figure className="school-session__photo"><ResponsiveImage src="/images/events/velammal-self-defence/school-recognition.webp" fallbackSrc="/images/events/velammal-self-defence/school-recognition.jpeg" width={3119} height={4160} fill sizes="(min-width: 900px) 18vw, 50vw" alt="Velammal Nexus student and school representative with Kannan and Kowsalya after the awareness programme"/></figure>
+          <figure className="school-session__photo"><ResponsiveImage src="/images/events/velammal-self-defence/awareness-session-team.webp" fallbackSrc="/images/events/velammal-self-defence/awareness-session-team.jpeg" width={3119} height={4160} fill sizes="(min-width: 900px) 18vw, 50vw" alt="Kannan and Kowsalya receiving an acknowledgement at Velammal Nexus Avadi"/></figure>
         </div>
       </div>
     </section>

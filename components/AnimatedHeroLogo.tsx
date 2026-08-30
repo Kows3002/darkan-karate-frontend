@@ -1,70 +1,56 @@
-"use client";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-
-const emblem = "/images/brand/darkhan-emblem-static.png";
-const phoenixBody = "/images/brand/darkhan-phoenix-body-v2.png";
-const leftWing = "/images/brand/darkhan-phoenix-wing-left-v2.png";
-const rightWing = "/images/brand/darkhan-phoenix-wing-right-v2.png";
+const emblem = "/images/brand/darkan-emblem-static.webp";
+const phoenixBody = "/images/brand/darkan-phoenix-body-v2.webp";
+const leftWing = "/images/brand/darkan-phoenix-wing-left-v2.webp";
+const rightWing = "/images/brand/darkan-phoenix-wing-right-v2.webp";
 
 export function AnimatedHeroLogo() {
-  const wrapper = useRef<HTMLDivElement>(null);
-  const [flying, setFlying] = useState(true);
-
-  useEffect(() => {
-    const element = wrapper.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setFlying(entry.isIntersecting),
-      { threshold: 0.15 },
-    );
-
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div
-      ref={wrapper}
-      className={`home-hero__logo-wrap${flying ? " is-flying" : ""}`}
+      className="home-hero__logo-wrap is-flying"
+      role="img"
       aria-label="Darkan Academy emblem with an animated phoenix"
     >
-      <Image
+      <ResponsiveImage
         src={emblem}
+        fallbackSrc="/images/brand/darkan-emblem-static.png"
         width={1254}
         height={1254}
         className="home-hero__logo"
-        alt="Darkan Academy emblem"
+        alt=""
+        sizes="(max-width: 600px) 82vw, (max-width: 820px) 76vw, 540px"
         priority
       />
-      <Image
+      <ResponsiveImage
         src={phoenixBody}
+        fallbackSrc="/images/brand/darkan-phoenix-body-v2.png"
         width={1254}
         height={1254}
         className="home-hero__phoenix-body"
         alt=""
-        aria-hidden="true"
-        priority
+        sizes="(max-width: 600px) 82vw, (max-width: 820px) 76vw, 540px"
+        loading="eager"
       />
-      <Image
+      <ResponsiveImage
         src={leftWing}
+        fallbackSrc="/images/brand/darkan-phoenix-wing-left-v2.png"
         width={1254}
         height={1254}
         className="home-hero__phoenix-wing home-hero__phoenix-wing--left"
         alt=""
-        aria-hidden="true"
-        priority
+        sizes="(max-width: 600px) 82vw, (max-width: 820px) 76vw, 540px"
+        loading="eager"
       />
-      <Image
+      <ResponsiveImage
         src={rightWing}
+        fallbackSrc="/images/brand/darkan-phoenix-wing-right-v2.png"
         width={1254}
         height={1254}
         className="home-hero__phoenix-wing home-hero__phoenix-wing--right"
         alt=""
-        aria-hidden="true"
-        priority
+        sizes="(max-width: 600px) 82vw, (max-width: 820px) 76vw, 540px"
+        loading="eager"
       />
     </div>
   );
